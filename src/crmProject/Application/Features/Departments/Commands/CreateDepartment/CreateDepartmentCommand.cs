@@ -15,6 +15,7 @@ namespace Application.Features.Departments.Commands.CreateDepartment
     {
         public string DepartmentName { get; set; }
         public string Definition { get; set; }
+        public int CreatedById { get; set; }
 
         public class CreateDepartmentCommandHandler : IRequestHandler<CreateDepartmentCommand, CreatedDepartmentDto>
         {
