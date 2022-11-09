@@ -1,4 +1,5 @@
 ﻿using Application.Features.Departments.Commands.CreateDepartment;
+using Application.Features.Departments.Commands.DeleteDepartment;
 using Application.Features.Departments.Commands.UpdateDepartment;
 using Application.Features.Departments.Dtos;
 using Application.Features.Personnels.Commands.CreatePersonnel;
@@ -23,6 +24,13 @@ namespace WebAPI.Controllers
         {
             UpdatedDepartmentDto result = await Mediator.Send(updateDepartmentCommand);
             return Created("", result);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] DeleteDepartmentCommand deleteDepartmentCommand)
+        {
+            DeletedDepartmentDto result = await Mediator.Send(deleteDepartmentCommand);
+            return Ok(result);
         }
     }
 }

@@ -10,9 +10,9 @@ public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IR
     where TEntity : Entity
     where TContext : DbContext
 {
-    protected TContext Context { get; }
+    private TContext Context { get; }
 
-    public EfRepositoryBase(TContext context)
+    protected EfRepositoryBase(TContext context)
     {
         Context = context;
     }
@@ -82,6 +82,14 @@ public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IR
         return entity;
     }
 
+    public async Task<TEntity> MarkAsRemovedAsync(TEntity entity)
+    {
+        entity.IsRemoved = true;
+        Context.Entry(entity).State = EntityState.Modified;
+        await Context.SaveChangesAsync();
+        return entity;
+    }
+
     public TEntity Get(Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>,
                        IIncludableQueryable<TEntity, object>>? include = null, bool enableTracking = true)
     {
@@ -137,5 +145,17 @@ public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IR
         return entity;
     }
 
-    
+    public TEntity MarkAsRemoved(TEntity entity)
+    {
+        entity.RemovedDate = DateTime.Now;
+        Context.Entry(entity).State = EntityState.Modified;
+        Context.SaveChanges();
+        return entity;
+    }
+
+    public void DeleteAllOrByFilter(Expression<Func<TEntity, bool>>? filter = null)
+    {
+        Context.RemoveRange(filter == null ? Context.Set<TEntity>().ToList() : Context.Set<TEntity>().Where(filter).ToList());
+        Context.SaveChanges();
+    }
 }

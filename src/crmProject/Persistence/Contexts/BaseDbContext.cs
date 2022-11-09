@@ -31,10 +31,16 @@ public class BaseDbContext : DbContext
 
         foreach (var data in datas)
         {
+            if (data.Entity.IsRemoved == true)
+            {
+                data.Entity.RemovedDate = DateTime.Now;
+                return await base.SaveChangesAsync(cancellationToken);
+            }
+
             _ = data.State switch
             {
                 EntityState.Added => data.Entity.CreationDate = DateTime.Now,
-                EntityState.Modified => data.Entity.ModifiedDate = DateTime.Now
+                EntityState.Modified => data.Entity.ModifiedDate = DateTime.Now,
             };
         }
         return await base.SaveChangesAsync(cancellationToken);
