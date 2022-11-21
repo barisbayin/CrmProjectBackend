@@ -32,9 +32,18 @@ namespace Application.Features.Departments.Commands.UpdateDepartment
 
             public async Task<UpdatedDepartmentDto> Handle(UpdateDepartmentCommand request, CancellationToken cancellationToken)
             {
-                Department mappedDepartment = _mapper.Map<Department>(request);
-                Department updatedDepartment = await _departmentRepository.UpdateAsync(mappedDepartment);
-                UpdatedDepartmentDto updatedDepartmentDto = _mapper.Map<UpdatedDepartmentDto>(updatedDepartment);
+                UpdatedDepartmentDto updatedDepartmentDto = new UpdatedDepartmentDto();
+
+                Department? willUpdateDepartment = await _departmentRepository.GetAsync(d => d.Id == request.Id, cancellationToken: cancellationToken);
+
+                if (willUpdateDepartment == null) return updatedDepartmentDto;
+
+                willUpdateDepartment.DepartmentName = request.DepartmentName;
+                willUpdateDepartment.Definition = request.Definition;
+                willUpdateDepartment.ModifiedById = request.ModifiedById;
+
+                Department updatedDepartment = await _departmentRepository.UpdateAsync(willUpdateDepartment);
+                updatedDepartmentDto = _mapper.Map<UpdatedDepartmentDto>(updatedDepartment);
 
                 return updatedDepartmentDto;
 

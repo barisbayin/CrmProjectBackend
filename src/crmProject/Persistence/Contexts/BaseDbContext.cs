@@ -34,14 +34,21 @@ public class BaseDbContext : DbContext
             if (data.Entity.IsRemoved == true)
             {
                 data.Entity.RemovedDate = DateTime.Now;
+                data.Entity.Status = false;
                 return await base.SaveChangesAsync(cancellationToken);
             }
 
-            _ = data.State switch
+            switch (data.State)
             {
-                EntityState.Added => data.Entity.CreationDate = DateTime.Now,
-                EntityState.Modified => data.Entity.ModifiedDate = DateTime.Now,
-            };
+                case EntityState.Added:
+                    data.Entity.CreationDate = DateTime.Now;
+                    data.Entity.Status = true;
+                    data.Entity.IsRemoved = false;
+                    break;
+                case EntityState.Modified:
+                    data.Entity.ModifiedDate = DateTime.Now;
+                    break;
+            }
         }
         return await base.SaveChangesAsync(cancellationToken);
     }

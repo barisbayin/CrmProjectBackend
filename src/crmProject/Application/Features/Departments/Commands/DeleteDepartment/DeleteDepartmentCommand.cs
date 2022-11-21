@@ -34,9 +34,15 @@ namespace Application.Features.Departments.Commands.DeleteDepartment
 
             public async Task<DeletedDepartmentDto> Handle(DeleteDepartmentCommand request, CancellationToken cancellationToken)
             {
+                DeletedDepartmentDto deletedDepartmentDto = new DeletedDepartmentDto();
                 Department? willDeleteDepartment = await _departmentRepository.GetAsync(d => d.Id == request.Id, cancellationToken: cancellationToken);
+
+
+                if (willDeleteDepartment == null) return deletedDepartmentDto;
+
+                willDeleteDepartment.RemovedById = request.RemovedById;
                 Department deletedDepartment = await _departmentRepository.MarkAsRemovedAsync(willDeleteDepartment);
-                DeletedDepartmentDto deletedDepartmentDto = _mapper.Map<DeletedDepartmentDto>(deletedDepartment);
+                deletedDepartmentDto = _mapper.Map<DeletedDepartmentDto>(deletedDepartment);
 
                 return deletedDepartmentDto;
             }

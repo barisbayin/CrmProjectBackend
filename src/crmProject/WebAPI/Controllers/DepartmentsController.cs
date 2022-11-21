@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Add([FromBody] UpdateDepartmentCommand updateDepartmentCommand)
+        public async Task<IActionResult> Update([FromBody] UpdateDepartmentCommand updateDepartmentCommand)
         {
             UpdatedDepartmentDto result = await Mediator.Send(updateDepartmentCommand);
             return Created("", result);
