@@ -12,21 +12,21 @@ namespace WebAPI.Controllers
     [ApiController]
     public class DepartmentsController : BaseController
     {
-        [HttpPost]
+        [HttpPost ("add")]
         public async Task<IActionResult> Add([FromBody] CreateDepartmentCommand createDepartmentCommand)
         {
             CreatedDepartmentDto result = await Mediator.Send(createDepartmentCommand);
             return Created("", result);
         }
 
-        [HttpPut]
+        [HttpPost ("update")]
         public async Task<IActionResult> Update([FromBody] UpdateDepartmentCommand updateDepartmentCommand)
         {
             UpdatedDepartmentDto result = await Mediator.Send(updateDepartmentCommand);
             return Created("", result);
         }
 
-        [HttpDelete]
+        [HttpPost ("markasremoved")]
         public async Task<IActionResult> Delete([FromBody] DeleteDepartmentCommand deleteDepartmentCommand)
         {
             DeletedDepartmentDto result = await Mediator.Send(deleteDepartmentCommand);

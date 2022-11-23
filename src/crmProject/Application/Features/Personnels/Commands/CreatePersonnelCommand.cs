@@ -11,7 +11,7 @@ using Domain.Entities;
 using Domain.Enums;
 using MediatR;
 
-namespace Application.Features.Personnels.Commands.CreatePersonnel
+namespace Application.Features.Personnels.Commands
 {
     public class CreatePersonnelCommand : IRequest<CreatedPersonnelDto> // ISecuredRequest
     {

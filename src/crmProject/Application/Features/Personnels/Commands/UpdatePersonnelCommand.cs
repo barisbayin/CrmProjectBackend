@@ -10,7 +10,7 @@ using Domain.Entities;
 using Domain.Enums;
 using MediatR;
 
-namespace Application.Features.Personnels.Commands.UpdatePersonnel;
+namespace Application.Features.Personnels.Commands;
 
 public class UpdatePersonnelCommand : IRequest<UpdatedPersonnelDto>
 {

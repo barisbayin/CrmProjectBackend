@@ -34,15 +34,15 @@ namespace Application.Features.Departments.Commands.UpdateDepartment
             {
                 UpdatedDepartmentDto updatedDepartmentDto = new UpdatedDepartmentDto();
 
-                Department? willUpdateDepartment = await _departmentRepository.GetAsync(d => d.Id == request.Id, cancellationToken: cancellationToken);
+                Department? departmentToBeUpdate = await _departmentRepository.GetAsync(d => d.Id == request.Id, cancellationToken: cancellationToken);
 
-                if (willUpdateDepartment == null) return updatedDepartmentDto;
+                if (departmentToBeUpdate == null) return updatedDepartmentDto;
 
-                willUpdateDepartment.DepartmentName = request.DepartmentName;
-                willUpdateDepartment.Definition = request.Definition;
-                willUpdateDepartment.ModifiedById = request.ModifiedById;
+                departmentToBeUpdate.DepartmentName = request.DepartmentName;
+                departmentToBeUpdate.Definition = request.Definition;
+                departmentToBeUpdate.ModifiedById = request.ModifiedById;
 
-                Department updatedDepartment = await _departmentRepository.UpdateAsync(willUpdateDepartment);
+                Department updatedDepartment = await _departmentRepository.UpdateAsync(departmentToBeUpdate);
                 updatedDepartmentDto = _mapper.Map<UpdatedDepartmentDto>(updatedDepartment);
 
                 return updatedDepartmentDto;
