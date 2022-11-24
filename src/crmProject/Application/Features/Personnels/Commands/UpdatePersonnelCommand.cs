@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Features.Departments.Dtos;
 using Application.Features.Personnels.Dtos;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -47,9 +48,32 @@ public class UpdatePersonnelCommand : IRequest<UpdatedPersonnelDto>
 
         public async Task<UpdatedPersonnelDto> Handle(UpdatePersonnelCommand request, CancellationToken cancellationToken)
         {
-            Personnel mappedPersonnel = _mapper.Map<Personnel>(request);
-            Personnel updatedPersonnel = await _personnelRepository.UpdateAsync(mappedPersonnel);
-            UpdatedPersonnelDto updatedPersonnelDto = _mapper.Map<UpdatedPersonnelDto>(updatedPersonnel);
+            UpdatedPersonnelDto updatedPersonnelDto = new UpdatedPersonnelDto();
+
+            Personnel? personnelToBeUpdate = await _personnelRepository.GetAsync(p => p.Id == request.Id, cancellationToken: cancellationToken);
+
+            if (personnelToBeUpdate == null) return updatedPersonnelDto;
+
+            personnelToBeUpdate.DepartmentId = request.DepartmentId;
+            personnelToBeUpdate.Name = request.Name;
+            personnelToBeUpdate.LastName = request.LastName;
+            personnelToBeUpdate.BirthDay = request.BirthDay;
+            personnelToBeUpdate.IdentityNumber = request.IdentityNumber;
+            personnelToBeUpdate.PhoneNumber = request.PhoneNumber;
+            personnelToBeUpdate.Email = request.Email;
+            personnelToBeUpdate.FullAddress = request.FullAddress;
+            personnelToBeUpdate.AddressLine = request.AddressLine;
+            personnelToBeUpdate.CountryId = request.CountryId;
+            personnelToBeUpdate.CityId = request.CityId;
+            personnelToBeUpdate.CountyId = request.CountyId;
+            personnelToBeUpdate.NeighbourhoodId = request.NeighbourhoodId;
+            personnelToBeUpdate.ZipCode = request.ZipCode;
+            personnelToBeUpdate.GenderInformation = request.GenderInformation;
+            personnelToBeUpdate.ImagePath = request.ImagePath;
+            personnelToBeUpdate.ModifiedById = request.ModifiedById;
+
+            Personnel updatedPersonnel = await _personnelRepository.UpdateAsync(personnelToBeUpdate);
+            updatedPersonnelDto = _mapper.Map<UpdatedPersonnelDto>(updatedPersonnel);
 
             return updatedPersonnelDto;
         }

@@ -1,8 +1,6 @@
-﻿using Application.Features.Departments.Commands.CreateDepartment;
-using Application.Features.Departments.Commands.DeleteDepartment;
-using Application.Features.Departments.Commands.UpdateDepartment;
+﻿using Application.Features.Departments.Commands;
 using Application.Features.Departments.Dtos;
-using Application.Features.Personnels.Commands.CreatePersonnel;
+using Application.Features.Personnels.Commands;
 using Application.Features.Personnels.Dtos;
 using Microsoft.AspNetCore.Mvc;
 

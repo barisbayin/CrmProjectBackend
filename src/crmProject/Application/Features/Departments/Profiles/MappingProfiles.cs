@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Application.Features.Departments.Commands.CreateDepartment;
-using Application.Features.Departments.Commands.DeleteDepartment;
-using Application.Features.Departments.Commands.UpdateDepartment;
+using Application.Features.Departments.Commands;
 using Application.Features.Departments.Dtos;
-using Application.Features.Personnels.Commands.CreatePersonnel;
+using Application.Features.Personnels.Commands;
 using AutoMapper;
 using Domain.Entities;
 

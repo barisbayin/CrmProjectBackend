@@ -11,9 +11,9 @@ using Core.Application.Pipelines.Caching;
 using Domain.Entities;
 using MediatR;
 
-namespace Application.Features.Departments.Commands.DeleteDepartment
+namespace Application.Features.Departments.Commands
 {
-    public class DeleteDepartmentCommand:IRequest<DeletedDepartmentDto>  /*,ISecuredRequest, ICacheRemoverRequest*/
+    public class DeleteDepartmentCommand : IRequest<DeletedDepartmentDto>  /*,ISecuredRequest, ICacheRemoverRequest*/
     {
         public int Id { get; set; }
         public int RemovedById { get; set; }
@@ -21,7 +21,7 @@ namespace Application.Features.Departments.Commands.DeleteDepartment
         //public bool BypassCache { get; }
         //public string CacheKey => "brands-list";
         //public string[] Roles => new[] { Admin, BrandDelete };
-        public class DeleteDepartmentCommandHandler:IRequestHandler<DeleteDepartmentCommand, DeletedDepartmentDto>
+        public class DeleteDepartmentCommandHandler : IRequestHandler<DeleteDepartmentCommand, DeletedDepartmentDto>
         {
             private readonly IDepartmentRepository _departmentRepository;
             private readonly IMapper _mapper;

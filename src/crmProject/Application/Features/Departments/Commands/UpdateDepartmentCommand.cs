@@ -10,16 +10,16 @@ using AutoMapper;
 using Domain.Entities;
 using MediatR;
 
-namespace Application.Features.Departments.Commands.UpdateDepartment
+namespace Application.Features.Departments.Commands
 {
-    public class UpdateDepartmentCommand:IRequest<UpdatedDepartmentDto>
+    public class UpdateDepartmentCommand : IRequest<UpdatedDepartmentDto>
     {
         public int Id { get; set; }
         public string DepartmentName { get; set; }
         public string Definition { get; set; }
         public int ModifiedById { get; set; }
 
-        public class UpdateDepartmentCommandHandler:IRequestHandler<UpdateDepartmentCommand, UpdatedDepartmentDto>
+        public class UpdateDepartmentCommandHandler : IRequestHandler<UpdateDepartmentCommand, UpdatedDepartmentDto>
         {
             private readonly IDepartmentRepository _departmentRepository;
             private readonly IMapper _mapper;

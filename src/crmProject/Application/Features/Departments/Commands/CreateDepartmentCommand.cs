@@ -9,7 +9,7 @@ using AutoMapper;
 using Domain.Entities;
 using MediatR;
 
-namespace Application.Features.Departments.Commands.CreateDepartment
+namespace Application.Features.Departments.Commands
 {
     public class CreateDepartmentCommand : IRequest<CreatedDepartmentDto>
     {
