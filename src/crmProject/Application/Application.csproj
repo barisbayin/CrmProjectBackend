@@ -7,12 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Personnels\Constants\**" />
+    <EmbeddedResource Remove="Features\Personnels\Constants\**" />
+    <None Remove="Features\Personnels\Constants\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Features\Departments\Constants\" />
     <Folder Include="Features\Departments\Models\" />
     <Folder Include="Features\Departments\Validators\" />
     <Folder Include="Features\Departments\Rules\" />
     <Folder Include="Features\Departments\Queries\" />
-    <Folder Include="Features\Personnels\Constants\" />
+    <Folder Include="Features\Personnels\Contents\" />
     <Folder Include="Features\Personnels\Models\" />
     <Folder Include="Features\Personnels\Rules\" />
     <Folder Include="Features\Personnels\Queries\" />

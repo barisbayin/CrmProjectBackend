@@ -36,7 +36,8 @@ namespace Application.Features.Personnels.Commands
                 personnelToBeDeleted.IsRemoved = true;
                 personnelToBeDeleted.RemovedById = request.RemovedById;
 
-                deletedPersonnelDto = _mapper.Map<DeletedPersonnelDto>(personnelToBeDeleted);
+                Personnel deletedPersonnel =await _personnelRepository.UpdateAsync(personnelToBeDeleted);
+                deletedPersonnelDto = _mapper.Map<DeletedPersonnelDto>(deletedPersonnel);
 
                 return deletedPersonnelDto;
             }
