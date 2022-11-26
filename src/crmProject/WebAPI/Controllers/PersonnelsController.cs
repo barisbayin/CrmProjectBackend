@@ -23,10 +23,10 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpPost("markasremoved")]
-        public async Task<IActionResult> MarkAsRemoved([FromBody] DeletePersonnelCommand deletePersonnelCommand)
+        [HttpPost("remove")]
+        public async Task<IActionResult> MarkAsRemoved([FromBody] RemovePersonnelCommand deletePersonnelCommand)
         {
-            DeletedPersonnelDto result = await Mediator.Send(deletePersonnelCommand);
+            RemovedPersonnelDto result = await Mediator.Send(deletePersonnelCommand);
             return Ok(result);
         }
     }

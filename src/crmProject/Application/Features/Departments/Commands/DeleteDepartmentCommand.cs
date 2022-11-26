@@ -13,7 +13,7 @@ using MediatR;
 
 namespace Application.Features.Departments.Commands
 {
-    public class DeleteDepartmentCommand : IRequest<DeletedDepartmentDto>  /*,ISecuredRequest, ICacheRemoverRequest*/
+    public class RemoveDepartmentCommand : IRequest<RemovedDepartmentDto>  /*,ISecuredRequest, ICacheRemoverRequest*/
     {
         public int Id { get; set; }
         public int RemovedById { get; set; }
@@ -21,30 +21,30 @@ namespace Application.Features.Departments.Commands
         //public bool BypassCache { get; }
         //public string CacheKey => "brands-list";
         //public string[] Roles => new[] { Admin, BrandDelete };
-        public class DeleteDepartmentCommandHandler : IRequestHandler<DeleteDepartmentCommand, DeletedDepartmentDto>
+        public class RemoveDepartmentCommandHandler : IRequestHandler<RemoveDepartmentCommand, RemovedDepartmentDto>
         {
             private readonly IDepartmentRepository _departmentRepository;
             private readonly IMapper _mapper;
 
-            public DeleteDepartmentCommandHandler(IDepartmentRepository departmentRepository, IMapper mapper)
+            public RemoveDepartmentCommandHandler(IDepartmentRepository departmentRepository, IMapper mapper)
             {
                 _departmentRepository = departmentRepository;
                 _mapper = mapper;
             }
 
-            public async Task<DeletedDepartmentDto> Handle(DeleteDepartmentCommand request, CancellationToken cancellationToken)
+            public async Task<RemovedDepartmentDto> Handle(RemoveDepartmentCommand request, CancellationToken cancellationToken)
             {
-                DeletedDepartmentDto deletedDepartmentDto = new DeletedDepartmentDto();
+                RemovedDepartmentDto removedDepartmentDto = new RemovedDepartmentDto();
 
-                Department? departmentToBeDelete = await _departmentRepository.GetAsync(d => d.Id == request.Id, cancellationToken: cancellationToken);
+                Department? departmentToBeRemove = await _departmentRepository.GetAsync(d => d.Id == request.Id, cancellationToken: cancellationToken);
 
-                if (departmentToBeDelete == null) return deletedDepartmentDto;
+                if (departmentToBeRemove == null) return removedDepartmentDto;
 
-                departmentToBeDelete.RemovedById = request.RemovedById;
-                Department deletedDepartment = await _departmentRepository.MarkAsRemovedAsync(departmentToBeDelete);
-                deletedDepartmentDto = _mapper.Map<DeletedDepartmentDto>(deletedDepartment);
+                departmentToBeRemove.RemovedById = request.RemovedById;
+                Department removedDepartment = await _departmentRepository.MarkAsRemovedAsync(departmentToBeRemove);
+                removedDepartmentDto = _mapper.Map<RemovedDepartmentDto>(removedDepartment);
 
-                return deletedDepartmentDto;
+                return removedDepartmentDto;
             }
         }
     }

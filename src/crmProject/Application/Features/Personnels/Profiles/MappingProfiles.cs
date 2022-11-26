@@ -18,8 +18,8 @@ namespace Application.Features.Personnels.Profiles
             CreateMap<Personnel, CreatePersonnelCommand>().ReverseMap();
             CreateMap<Personnel, UpdatedPersonnelDto>().ReverseMap();
             CreateMap<Personnel, UpdatePersonnelCommand>().ReverseMap();
-            CreateMap<Personnel, DeletedPersonnelDto>().ReverseMap();
-            CreateMap<Personnel, DeletePersonnelCommand>().ReverseMap();
+            CreateMap<Personnel, RemovedPersonnelDto>().ReverseMap();
+            CreateMap<Personnel, RemovePersonnelCommand>().ReverseMap();
         }
     }
 }

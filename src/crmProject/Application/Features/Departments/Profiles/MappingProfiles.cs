@@ -19,8 +19,8 @@ namespace Application.Features.Departments.Profiles
             CreateMap<Department, CreateDepartmentCommand>().ReverseMap();
             CreateMap<Department, UpdatedDepartmentDto>().ReverseMap();
             CreateMap<Department, UpdateDepartmentCommand>().ReverseMap();
-            CreateMap<Department, DeletedDepartmentDto>().ReverseMap();
-            CreateMap<Department, DeleteDepartmentCommand>().ReverseMap();
+            CreateMap<Department, RemovedDepartmentDto>().ReverseMap();
+            CreateMap<Department, RemoveDepartmentCommand>().ReverseMap();
         }
     }
 }

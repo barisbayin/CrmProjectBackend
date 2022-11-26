@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Departments.Dtos
 {
-    public class DeletedDepartmentDto
+    public class RemovedDepartmentDto
     {
         public int Id { get; set; }
         public string DepartmentName { get; set; }
         public string Definition { get; set; }
+        public int Status { get; set; }
         public DateTime CreationDate { get; set; }
         public int CreatedById { get; set; }
         public DateTime ModifiedDate { get; set; }

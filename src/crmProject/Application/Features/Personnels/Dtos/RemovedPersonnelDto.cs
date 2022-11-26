@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Personnels.Dtos
 {
-    public class DeletedPersonnelDto
+    public class RemovedPersonnelDto
     {
         public int Id { get; set; }
     }
