@@ -1,6 +1,5 @@
-﻿namespace Core.Application.Rules
+﻿namespace Core.Application.Rules;
+
+public abstract class BaseBusinessRules
 {
-    public abstract class BaseBusinessRules
-    {
-    }
 }

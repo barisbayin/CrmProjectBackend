@@ -1,26 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Application.Features.Departments.Commands;
+﻿using Application.Features.Departments.Commands;
 using Application.Features.Departments.Dtos;
-using Application.Features.Personnels.Commands;
+using Application.Features.Departments.Models;
 using AutoMapper;
+using Core.Persistence.Paging;
 using Domain.Entities;
 
-namespace Application.Features.Departments.Profiles
+namespace Application.Features.Departments.Profiles;
+
+public class MappingProfiles : Profile
 {
-    public class MappingProfiles : Profile
+    public MappingProfiles()
     {
-        public MappingProfiles()
-        {
-            CreateMap<Department, CreatedDepartmentDto>().ReverseMap();
-            CreateMap<Department, CreateDepartmentCommand>().ReverseMap();
-            CreateMap<Department, UpdatedDepartmentDto>().ReverseMap();
-            CreateMap<Department, UpdateDepartmentCommand>().ReverseMap();
-            CreateMap<Department, RemovedDepartmentDto>().ReverseMap();
-            CreateMap<Department, RemoveDepartmentCommand>().ReverseMap();
-        }
+        CreateMap<Department, CreatedDepartmentDto>().ReverseMap();
+        CreateMap<Department, UpdatedDepartmentDto>().ReverseMap();
+        CreateMap<Department, RemovedDepartmentDto>().ReverseMap();
+        CreateMap<Department, DepartmentListDto>().ReverseMap();
+
+        CreateMap<Department, CreateDepartmentCommand>().ReverseMap();
+        CreateMap<Department, UpdateDepartmentCommand>().ReverseMap();
+        CreateMap<Department, RemoveDepartmentCommand>().ReverseMap();
+
+        CreateMap<IPaginate<Department>, DepartmentListModel>().ReverseMap();
+        
     }
 }

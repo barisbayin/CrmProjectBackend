@@ -1,18 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
 using Core.Persistence.Repositories;
-using Core.Security.Entities;
-using Domain.Entities;
 
 namespace Persistence.Contexts;
 public class BaseDbContext : DbContext

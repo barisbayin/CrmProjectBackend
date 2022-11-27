@@ -1,41 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Application.Features.Departments.Dtos;
+﻿using Application.Features.Departments.Dtos;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
 
-namespace Application.Features.Departments.Commands
+namespace Application.Features.Departments.Commands;
+
+public class CreateDepartmentCommand : IRequest<CreatedDepartmentDto>
 {
-    public class CreateDepartmentCommand : IRequest<CreatedDepartmentDto>
+    public string DepartmentName { get; set; }
+    public string Definition { get; set; }
+    public int CreatedById { get; set; }
+
+    public class CreateDepartmentCommandHandler : IRequestHandler<CreateDepartmentCommand, CreatedDepartmentDto>
     {
-        public string DepartmentName { get; set; }
-        public string Definition { get; set; }
-        public int CreatedById { get; set; }
+        private readonly IDepartmentRepository _departmentRepository;
+        private readonly IMapper _mapper;
 
-        public class CreateDepartmentCommandHandler : IRequestHandler<CreateDepartmentCommand, CreatedDepartmentDto>
+        public CreateDepartmentCommandHandler(IDepartmentRepository departmentRepository, IMapper mapper)
         {
-            private readonly IDepartmentRepository _departmentRepository;
-            private readonly IMapper _mapper;
+            _departmentRepository = departmentRepository;
+            _mapper = mapper;
+        }
 
-            public CreateDepartmentCommandHandler(IDepartmentRepository departmentRepository, IMapper mapper)
-            {
-                _departmentRepository = departmentRepository;
-                _mapper = mapper;
-            }
+        public async Task<CreatedDepartmentDto> Handle(CreateDepartmentCommand request, CancellationToken cancellationToken)
+        {
+            Department mappedDepartment = _mapper.Map<Department>(request);
+            Department createdDepartment = await _departmentRepository.AddAsync(mappedDepartment);
+            CreatedDepartmentDto createdDepartmentDto = _mapper.Map<CreatedDepartmentDto>(createdDepartment);
 
-            public async Task<CreatedDepartmentDto> Handle(CreateDepartmentCommand request, CancellationToken cancellationToken)
-            {
-                Department mappedDepartment = _mapper.Map<Department>(request);
-                Department createdDepartment = await _departmentRepository.AddAsync(mappedDepartment);
-                CreatedDepartmentDto createdDepartmentDto = _mapper.Map<CreatedDepartmentDto>(createdDepartment);
-
-                return createdDepartmentDto;
-            }
+            return createdDepartmentDto;
         }
     }
 }

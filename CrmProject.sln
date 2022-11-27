@@ -21,15 +21,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Persistence", "src\cor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Security", "src\corePackages\Core.Security\Core.Security.csproj", "{C48FC385-7431-474E-BCA0-0A6105EB9536}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\crmProject\Application\Application.csproj", "{62563E89-9E75-484E-8ACF-5E1757C863AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\crmProject\Application\Application.csproj", "{62563E89-9E75-484E-8ACF-5E1757C863AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\crmProject\Domain\Domain.csproj", "{8381FDD3-1E33-4B78-9134-7EAEE0AE9BA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\crmProject\Domain\Domain.csproj", "{8381FDD3-1E33-4B78-9134-7EAEE0AE9BA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\crmProject\Infrastructure\Infrastructure.csproj", "{E20A65FA-756C-49A4-8C4E-92F7C33F1C48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\crmProject\Infrastructure\Infrastructure.csproj", "{E20A65FA-756C-49A4-8C4E-92F7C33F1C48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "src\crmProject\Persistence\Persistence.csproj", "{D02C87CB-D8A3-4B18-B739-84C62384F59E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "src\crmProject\Persistence\Persistence.csproj", "{D02C87CB-D8A3-4B18-B739-84C62384F59E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "src\crmProject\WebAPI\WebAPI.csproj", "{29C4A464-FA5A-44FB-81BA-59DDF6D598A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "src\crmProject\WebAPI\WebAPI.csproj", "{29C4A464-FA5A-44FB-81BA-59DDF6D598A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

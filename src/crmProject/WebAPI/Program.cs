@@ -1,6 +1,5 @@
 using Application;
 using Core.CrossCuttingConcerns.Exceptions;
-using Core.Security;
 using Core.Security.Encryption;
 using Core.Security.JWT;
 using Infrastructure;

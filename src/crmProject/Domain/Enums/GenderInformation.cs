@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Enums
+namespace Domain.Enums;
+
+public enum GenderInformation
 {
-    public enum GenderInformation
-    {
-        [Display(Name = "Male")]
-        M = 1,
+    [Display(Name = "Male")]
+    M = 1,
 
-        [Display(Name = "Female")]
-        F = 2,
+    [Display(Name = "Female")]
+    F = 2,
 
-        [Display(Name = "Unspecified")]
-        U = 3,
-    }
+    [Display(Name = "Unspecified")]
+    U = 3,
 }
