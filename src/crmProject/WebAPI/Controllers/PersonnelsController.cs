@@ -1,5 +1,10 @@
-﻿using Application.Features.Personnels.Commands;
+﻿using Application.Features.Departments.Models;
+using Application.Features.Departments.Queries;
+using Application.Features.Personnels.Commands;
 using Application.Features.Personnels.Dtos;
+using Application.Features.Personnels.Models;
+using Application.Features.Personnels.Queries;
+using Core.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -26,6 +31,14 @@ public class PersonnelsController : BaseController
     public async Task<IActionResult> MarkAsRemoved([FromBody] RemovePersonnelCommand deletePersonnelCommand)
     {
         RemovedPersonnelDto result = await Mediator.Send(deletePersonnelCommand);
+        return Ok(result);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
+    {
+        GetListPersonnelQuery getListPersonnelQuery = new() { PageRequest = pageRequest };
+        PersonnelListModel result = await Mediator.Send(getListPersonnelQuery);
         return Ok(result);
     }
 }

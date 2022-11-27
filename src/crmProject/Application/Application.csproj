@@ -17,9 +17,7 @@
     <Folder Include="Features\Departments\Rules\" />
     <Folder Include="Features\Departments\Validators\" />
     <Folder Include="Features\Personnels\Contents\" />
-    <Folder Include="Features\Personnels\Models\" />
     <Folder Include="Features\Personnels\Rules\" />
-    <Folder Include="Features\Personnels\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

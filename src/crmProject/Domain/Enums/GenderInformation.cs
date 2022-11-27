@@ -5,11 +5,11 @@ namespace Domain.Enums;
 public enum GenderInformation
 {
     [Display(Name = "Male")]
-    M = 1,
+    Male = 1,
 
     [Display(Name = "Female")]
-    F = 2,
+    Female = 2,
 
     [Display(Name = "Unspecified")]
-    U = 3,
+    Unspecified = 3,
 }
