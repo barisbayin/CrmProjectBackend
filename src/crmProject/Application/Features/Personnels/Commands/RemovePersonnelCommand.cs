@@ -29,14 +29,14 @@ namespace Application.Features.Personnels.Commands
             {
                 RemovedPersonnelDto removedPersonnelDto = new RemovedPersonnelDto();
 
-                Personnel? personnelToBeRemoved= await _personnelRepository.GetAsync(p => p.Id == request.Id, cancellationToken: cancellationToken);
+                Personnel? personnelToBeRemoved = await _personnelRepository.GetAsync(p => p.Id == request.Id, cancellationToken: cancellationToken);
 
                 if (personnelToBeRemoved == null) return removedPersonnelDto;
 
                 personnelToBeRemoved.IsRemoved = true;
                 personnelToBeRemoved.RemovedById = request.RemovedById;
 
-                Personnel removedPersonnel =await _personnelRepository.UpdateAsync(personnelToBeRemoved);
+                Personnel removedPersonnel = await _personnelRepository.UpdateAsync(personnelToBeRemoved);
                 removedPersonnelDto = _mapper.Map<RemovedPersonnelDto>(removedPersonnel);
 
                 return removedPersonnelDto;
