@@ -3,7 +3,7 @@ using Core.Persistence.Paging;
 
 namespace Application.Features.Departments.Models;
 
-public class DepartmentListModel : BasePageableModel
+public class DepartmentPagebleListModel : BasePageableModel
 {
     public IList<DepartmentListDto> Items { get; set; }
 }

@@ -31,7 +31,7 @@ namespace Application.Features.Personnels.Queries
 
             public async Task<PersonnelListModel> Handle(GetListPersonnelQuery request, CancellationToken cancellationToken)
             {
-                IPaginate<Personnel> personnels = await _personnelRepository.GetListAsync(include: p =>
+                IPaginate<Personnel> personnels = await _personnelRepository.GetPagebleListAsync(include: p =>
                                                                                          p.Include(r => r.Department),
                                                                                          index: request.PageRequest.Page,
                                                                                          size: request.PageRequest.PageSize, 

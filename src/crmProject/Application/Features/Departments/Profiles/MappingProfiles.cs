@@ -20,7 +20,7 @@ public class MappingProfiles : Profile
         CreateMap<Department, UpdateDepartmentCommand>().ReverseMap();
         CreateMap<Department, RemoveDepartmentCommand>().ReverseMap();
 
-        CreateMap<IPaginate<Department>, DepartmentListModel>().ReverseMap();
+        CreateMap<IPaginate<Department>, DepartmentPagebleListModel>().ReverseMap();
         
     }
 }

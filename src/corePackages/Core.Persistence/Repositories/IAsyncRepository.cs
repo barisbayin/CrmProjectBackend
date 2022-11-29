@@ -10,13 +10,13 @@ public interface IAsyncRepository<T> : IQuery<T> where T : Entity
                       IIncludableQueryable<T, object>>? include = null, bool enableTracking = true,
                       CancellationToken cancellationToken = default);
 
-    Task<IPaginate<T>> GetListAsync(Expression<Func<T, bool>>? predicate = null,
+    Task<IPaginate<T>> GetPagebleListAsync(Expression<Func<T, bool>>? predicate = null,
                                     Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
                                     Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
                                     int index = 0, int size = 10, bool enableTracking = true,
                                     CancellationToken cancellationToken = default);
 
-    Task<IPaginate<T>> GetListByDynamicAsync(Dynamic.Dynamic dynamic,
+    Task<IPaginate<T>> GetPagebleListByDynamicAsync(Dynamic.Dynamic dynamic,
                                              Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
                                              int index = 0, int size = 10, bool enableTracking = true,
                                              CancellationToken cancellationToken = default);

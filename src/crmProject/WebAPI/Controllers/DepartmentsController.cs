@@ -33,10 +33,10 @@ public class DepartmentsController : BaseController
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
+    public async Task<IActionResult> GetPagebleList([FromQuery] PageRequest pageRequest)
     {
-        GetListDepartmentQuery getListDepartmentQuery = new() { PageRequest = pageRequest };
-        DepartmentListModel result = await Mediator.Send(getListDepartmentQuery);
+        GetPagebleListDepartmentQuery getPagebleListDepartmentQuery = new() { PageRequest = pageRequest };
+        DepartmentPagebleListModel result = await Mediator.Send(getPagebleListDepartmentQuery);
         return Ok(result);
     }
 }
