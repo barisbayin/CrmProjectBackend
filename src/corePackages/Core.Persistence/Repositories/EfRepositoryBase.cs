@@ -98,7 +98,7 @@ public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IR
         if (include != null) queryable = include(queryable);
         return queryable.FirstOrDefault(predicate);
     }
-    public IPaginate<TEntity> GetList(Expression<Func<TEntity, bool>>? predicate = null,
+    public IPaginate<TEntity> GetPagebleList(Expression<Func<TEntity, bool>>? predicate = null,
                                       Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
                                       Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
                                       int index = 0, int size = 10,
@@ -113,7 +113,7 @@ public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IR
         return queryable.ToPaginate(index, size);
     }
 
-    public IPaginate<TEntity> GetListByDynamic(Dynamic.Dynamic dynamic,
+    public IPaginate<TEntity> GetPagebleListByDynamic(Dynamic.Dynamic dynamic,
                                                Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>?
                                                    include = null, int index = 0, int size = 10,
                                                bool enableTracking = true)
