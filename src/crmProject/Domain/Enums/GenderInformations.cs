@@ -2,7 +2,7 @@
 
 namespace Domain.Enums;
 
-public enum GenderInformation
+public enum GenderInformations
 {
     [Display(Name = "Male")]
     Male = 1,
