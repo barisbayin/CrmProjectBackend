@@ -16,7 +16,7 @@ public class CachingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
     private readonly CacheSettings _cacheSettings;
 
     public CachingBehavior(IDistributedCache cache, ILogger<CachingBehavior<TRequest, TResponse>> logger,
-                           IConfiguration configuration)
+        IConfiguration configuration)
     {
         _cache = cache;
         _logger = logger;
@@ -24,7 +24,7 @@ public class CachingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
     }
 
     public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
-                                        RequestHandlerDelegate<TResponse> next)
+        RequestHandlerDelegate<TResponse> next)
     {
         TResponse response;
         if (request.BypassCache) return await next();

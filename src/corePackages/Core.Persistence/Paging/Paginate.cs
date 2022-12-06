@@ -50,7 +50,7 @@ public class Paginate<T> : IPaginate<T>
 public class Paginate<TSource, TResult> : IPaginate<TResult>
 {
     public Paginate(IEnumerable<TSource> source, Func<IEnumerable<TSource>, IEnumerable<TResult>> converter,
-                    int index, int size, int from)
+        int index, int size, int from)
     {
         var enumerable = source as TSource[] ?? source.ToArray();
 
@@ -119,7 +119,7 @@ public static class Paginate
     }
 
     public static IPaginate<TResult> From<TResult, TSource>(IPaginate<TSource> source,
-                                                            Func<IEnumerable<TSource>, IEnumerable<TResult>> converter)
+        Func<IEnumerable<TSource>, IEnumerable<TResult>> converter)
     {
         return new Paginate<TSource, TResult>(source, converter);
     }

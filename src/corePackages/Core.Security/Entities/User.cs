@@ -24,7 +24,7 @@ public class User : Entity
     }
 
     public User(int id, string firstName, string lastName, string email, byte[] passwordSalt, byte[] passwordHash,
-                bool status, AuthenticatorType authenticatorType) : this()
+        bool status, AuthenticatorType authenticatorType) : this()
     {
         Id = id;
         FirstName = firstName;

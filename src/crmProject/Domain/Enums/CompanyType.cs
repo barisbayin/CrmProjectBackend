@@ -6,16 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Domain.Enums
+namespace Domain.Enums;
+
+public enum CompanyType
 {
-    public enum CompanyType
-    {
 
-        SoleProprietorship = 1,
+    SoleProprietorship = 1,
 
-        LimitedCompany = 2,
+    LimitedCompany = 2,
 
-        IncorporatedCompany = 3,
+    IncorporatedCompany = 3,
 
-    }
 }

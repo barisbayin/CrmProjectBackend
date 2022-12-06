@@ -12,34 +12,33 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.Personnels.Queries
+namespace Application.Features.Personnels.Queries;
+
+public class GetListPersonnelQuery :IRequest<PersonnelListModel>
 {
-    public class GetListPersonnelQuery :IRequest<PersonnelListModel>
+    public PageRequest PageRequest { get; set; }
+
+    public class GetListPersonnelQueryHandler : IRequestHandler<GetListPersonnelQuery,PersonnelListModel>
     {
-        public PageRequest PageRequest { get; set; }
+        private readonly IPersonnelRepository _personnelRepository;
+        private readonly IMapper _mapper;
 
-        public class GetListPersonnelQueryHandler : IRequestHandler<GetListPersonnelQuery,PersonnelListModel>
+        public GetListPersonnelQueryHandler(IPersonnelRepository personnelRepository, IMapper mapper)
         {
-            private readonly IPersonnelRepository _personnelRepository;
-            private readonly IMapper _mapper;
+            _personnelRepository = personnelRepository;
+            _mapper = mapper;
+        }
 
-            public GetListPersonnelQueryHandler(IPersonnelRepository personnelRepository, IMapper mapper)
-            {
-                _personnelRepository = personnelRepository;
-                _mapper = mapper;
-            }
+        public async Task<PersonnelListModel> Handle(GetListPersonnelQuery request, CancellationToken cancellationToken)
+        {
+            IPaginate<Personnel> personnels = await _personnelRepository.GetPagebleListAsync(include: p =>
+                    p.Include(r => r.Department),
+                index: request.PageRequest.Page,
+                size: request.PageRequest.PageSize, 
+                cancellationToken: cancellationToken);
+            PersonnelListModel mappedPersonnelListModel = _mapper.Map<PersonnelListModel>(personnels);
+            return mappedPersonnelListModel;
 
-            public async Task<PersonnelListModel> Handle(GetListPersonnelQuery request, CancellationToken cancellationToken)
-            {
-                IPaginate<Personnel> personnels = await _personnelRepository.GetPagebleListAsync(include: p =>
-                                                                                         p.Include(r => r.Department),
-                                                                                         index: request.PageRequest.Page,
-                                                                                         size: request.PageRequest.PageSize, 
-                                                                                         cancellationToken: cancellationToken);
-                PersonnelListModel mappedPersonnelListModel = _mapper.Map<PersonnelListModel>(personnels);
-                return mappedPersonnelListModel;
-
-            }
         }
     }
 }

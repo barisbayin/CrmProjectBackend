@@ -7,16 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Features\Personnels\Constants\**" />
-    <EmbeddedResource Remove="Features\Personnels\Constants\**" />
-    <None Remove="Features\Personnels\Constants\**" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Folder Include="Features\CorporateCustomers\Constants\" />
+    <Folder Include="Features\CorporateCustomers\Models\" />
+    <Folder Include="Features\CorporateCustomers\Validators\" />
+    <Folder Include="Features\CorporateCustomers\Rules\" />
+    <Folder Include="Features\CorporateCustomers\Queries\" />
     <Folder Include="Features\Departments\Constants\" />
     <Folder Include="Features\Departments\Rules\" />
     <Folder Include="Features\Departments\Validators\" />
-    <Folder Include="Features\Personnels\Contents\" />
+    <Folder Include="Features\IndividualCustomer\Commands\" />
+    <Folder Include="Features\IndividualCustomer\Constants\" />
+    <Folder Include="Features\IndividualCustomer\Models\" />
+    <Folder Include="Features\IndividualCustomer\Validators\" />
+    <Folder Include="Features\IndividualCustomer\Rules\" />
+    <Folder Include="Features\IndividualCustomer\Queries\" />
+    <Folder Include="Features\IndividualCustomer\Profiles\" />
+    <Folder Include="Features\Personnels\Constants\" />
     <Folder Include="Features\Personnels\Rules\" />
   </ItemGroup>
 

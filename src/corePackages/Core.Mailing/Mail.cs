@@ -18,7 +18,7 @@ public class Mail
     }
 
     public Mail(string subject, string textBody, string htmlBody, AttachmentCollection? attachments, string toFullName,
-                string toEmail, List<MailboxAddress>? ccList = null, List<MailboxAddress>? bccList = null)
+        string toEmail, List<MailboxAddress>? ccList = null, List<MailboxAddress>? bccList = null)
     {
         Subject = subject;
         TextBody = textBody;

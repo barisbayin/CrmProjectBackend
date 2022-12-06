@@ -134,8 +134,8 @@ public class ExceptionMiddleware
             Parameters = logParameters,
             User = _contextAccessor.HttpContext == null ||
                    _contextAccessor.HttpContext.User.Identity.Name == null
-            ? "?"
-                       : _contextAccessor.HttpContext.User.Identity.Name
+                ? "?"
+                : _contextAccessor.HttpContext.User.Identity.Name
         };
 
         _loggerServiceBase.Info(JsonConvert.SerializeObject(logDetail));

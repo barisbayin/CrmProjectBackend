@@ -5,6 +5,7 @@ using System.Reflection;
 using Core.Persistence.Repositories;
 
 namespace Persistence.Contexts;
+
 public class BaseDbContext : DbContext
 {
     private IConfiguration Configuration { get; set; }

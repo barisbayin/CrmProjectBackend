@@ -17,7 +17,7 @@ public class AuthorizationBehavior<TRequest, TResponse> : IPipelineBehavior<TReq
     }
 
     public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
-                                        RequestHandlerDelegate<TResponse> next)
+        RequestHandlerDelegate<TResponse> next)
     {
         List<string>? roleClaims = _httpContextAccessor.HttpContext.User.ClaimRoles();
 

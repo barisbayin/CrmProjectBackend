@@ -25,7 +25,7 @@ public class RefreshToken : Entity
     }
 
     public RefreshToken(int id, string token, DateTime expires, DateTime created, string createdByIp, DateTime? revoked,
-                        string revokedByIp, string replacedByToken, string reasonRevoked)
+        string revokedByIp, string replacedByToken, string reasonRevoked)
     {
         Id = id;
         Token = token;

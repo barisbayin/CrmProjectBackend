@@ -6,15 +6,18 @@ using Persistence.Contexts;
 using Persistence.Repositories;
 
 namespace Persistence;
+
 public static class PersistenceServiceRegistration
 {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<BaseDbContext>(options =>
-                                                 options.UseSqlServer(configuration.GetConnectionString("CrmProjectConnectionString")));
+            options.UseSqlServer(configuration.GetConnectionString("CrmProjectConnectionString")));
 
         services.AddScoped<IPersonnelRepository, PersonnelRepository>();
         services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+        services.AddScoped<ICorporateCustomerRepository, CorporateCustomerRepository>();
+        services.AddScoped<IIndividualCustomerRepository, IndividualCustomerRepository>();
         /*
         services.AddScoped<IBrandRepository, BrandRepository>();
         services.AddScoped<ICarRepository, CarRepository>();

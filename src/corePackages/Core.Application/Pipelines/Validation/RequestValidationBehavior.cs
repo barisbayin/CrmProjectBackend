@@ -15,14 +15,14 @@ public class RequestValidationBehavior<TRequest, TResponse> : IPipelineBehavior<
     }
 
     public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
-                                  RequestHandlerDelegate<TResponse> next)
+        RequestHandlerDelegate<TResponse> next)
     {
         ValidationContext<object> context = new(request);
         List<ValidationFailure> failures = _validators
-                                           .Select(validator => validator.Validate(context))
-                                           .SelectMany(result => result.Errors)
-                                           .Where(failure => failure != null)
-                                           .ToList();
+            .Select(validator => validator.Validate(context))
+            .SelectMany(result => result.Errors)
+            .Where(failure => failure != null)
+            .ToList();
         if (failures.Count != 0) throw new ValidationException(failures);
         return next();
     }

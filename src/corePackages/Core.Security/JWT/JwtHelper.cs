@@ -52,8 +52,8 @@ public class JwtHelper : ITokenHelper
     }
 
     public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user,
-                                                   SigningCredentials signingCredentials,
-                                                   IList<OperationClaim> operationClaims)
+        SigningCredentials signingCredentials,
+        IList<OperationClaim> operationClaims)
     {
         JwtSecurityToken jwt = new(
             tokenOptions.Issuer,

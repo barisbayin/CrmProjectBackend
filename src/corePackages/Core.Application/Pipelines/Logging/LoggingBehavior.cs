@@ -20,7 +20,7 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
     }
 
     public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
-                                  RequestHandlerDelegate<TResponse> next)
+        RequestHandlerDelegate<TResponse> next)
     {
         List<LogParameter> logParameters = new();
         logParameters.Add(new LogParameter
@@ -35,8 +35,8 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
             Parameters = logParameters,
             User = _httpContextAccessor.HttpContext == null ||
                    _httpContextAccessor.HttpContext.User.Identity.Name == null
-                       ? "?"
-                       : _httpContextAccessor.HttpContext.User.Identity.Name
+                ? "?"
+                : _httpContextAccessor.HttpContext.User.Identity.Name
         };
 
         _loggerServiceBase.Info(JsonConvert.SerializeObject(logDetail));

@@ -26,8 +26,8 @@ public class GetPagebleListDepartmentQuery : IRequest<DepartmentPagebleListModel
         public async Task<DepartmentPagebleListModel> Handle(GetPagebleListDepartmentQuery request, CancellationToken cancellationToken)
         {
             IPaginate<Department> departments = await _departmentRepository.GetPagebleListAsync(index: request.PageRequest.Page, 
-                                                                                         size: request.PageRequest.PageSize,
-                                                                                         cancellationToken: cancellationToken);
+                size: request.PageRequest.PageSize,
+                cancellationToken: cancellationToken);
             DepartmentPagebleListModel mappedDepartmentPagebleListModel = _mapper.Map<DepartmentPagebleListModel>(departments);
             return mappedDepartmentPagebleListModel;
         }

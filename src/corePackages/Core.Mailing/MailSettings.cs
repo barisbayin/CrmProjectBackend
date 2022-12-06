@@ -16,7 +16,7 @@ public class MailSettings
     }
 
     public MailSettings(string server, int port, string senderFullName, string senderEmail, string userName,
-                        string password, bool authenticationRequired=false)
+        string password, bool authenticationRequired=false)
     {
         Server = server;
         Port = port;
