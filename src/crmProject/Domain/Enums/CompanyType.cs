@@ -8,16 +8,14 @@ using System.Xml.Linq;
 
 namespace Domain.Enums
 {
-    public enum CompanyTypes
+    public enum CompanyType
     {
-        [Display(Name = "Şahıs Şirketi")]
-        PC = 1,
 
-        [Display(Name = "Limited Şirket")]
-        LC = 2,
+        SoleProprietorship = 1,
 
-        [Display(Name = "Anonim Şirket")]
-        AC = 3,
+        LimitedCompany = 2,
+
+        IncorporatedCompany = 3,
 
     }
 }

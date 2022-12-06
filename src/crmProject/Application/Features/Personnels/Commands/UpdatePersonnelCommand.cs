@@ -24,7 +24,7 @@ public class UpdatePersonnelCommand : IRequest<UpdatedPersonnelDto>
     public int CountyId { get; set; }
     public int NeighbourhoodId { get; set; }
     public string ZipCode { get; set; }
-    public GenderInformations GenderInformation { get; set; }
+    public GenderInformation GenderInformation { get; set; }
     public string? ImagePath { get; set; }
     public int ModifiedById { get; set; }
 

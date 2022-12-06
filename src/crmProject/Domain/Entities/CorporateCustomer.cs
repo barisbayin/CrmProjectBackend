@@ -12,7 +12,7 @@ public class CorporateCustomer : Entity
     public string TaxAdministration { get; set; }
     public string MainOperationCode { get; set; }
     public string MainOperationDescription { get; set; }
-    public CompanyTypes CompanyTypes { get; set; }
+    public CompanyType CompanyType { get; set; }
     public string PhoneNumber { get; set; }
     public string Email { get; set; }
     public string? FullAddress { get; set; }

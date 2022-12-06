@@ -5,6 +5,7 @@ namespace Domain.Entities;
 
 public class IndividualCustomer : Entity
 {
+    public string CustomerCode { get; set; }
     public string Name { get; set; }
     public string LastName { get; set; }
     public DateTime BirthDay { get; set; }
@@ -18,7 +19,7 @@ public class IndividualCustomer : Entity
     public int? CountyId { get; set; }
     public int? NeighbourhoodId { get; set; }
     public string? ZipCode { get; set; }
-    public GenderInformations? GenderInformation { get; set; }
+    public GenderInformation? GenderInformation { get; set; }
     public string? ImagePath { get; set; }
 
 }

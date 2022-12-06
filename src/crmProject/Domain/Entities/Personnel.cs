@@ -19,7 +19,7 @@ public class Personnel : Entity
     public int? CountyId { get; set; } 
     public int? NeighbourhoodId { get; set; } 
     public string? ZipCode { get; set; }
-    public GenderInformations? GenderInformation { get; set; } 
+    public GenderInformation? GenderInformation { get; set; } 
     public string? ImagePath { get; set; }
     public virtual Department Department { get; set; }
 
@@ -29,7 +29,7 @@ public class Personnel : Entity
                 
     }
 
-    public Personnel(int id, string name, string lastName, DateTime birthDay, string identityNumber, string phoneNumber, string email, string? fullAddress, string? addressLine, int? countryId, int? cityId, int? countyId, int? neighbourhoodId, string? zipCode, GenderInformations? genderInformation, string? imagePath, int departmentId) : base(id)
+    public Personnel(int id, string name, string lastName, DateTime birthDay, string identityNumber, string phoneNumber, string email, string? fullAddress, string? addressLine, int? countryId, int? cityId, int? countyId, int? neighbourhoodId, string? zipCode, GenderInformation? genderInformation, string? imagePath, int departmentId) : base(id)
     {
         DepartmentId = departmentId;
         Name = name;
